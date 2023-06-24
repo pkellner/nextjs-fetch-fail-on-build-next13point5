@@ -17,7 +17,11 @@ async function getSessions() {
 
 async function getVideo(id) {
   await delay(getRandomNumber(2000, 4500));
-  if (id == null) return { id: "101", snippet: { title: "no video" } };
+  console.log("id", id);
+  if (id == null) {
+    console.log("no video, id is null");
+    return { id: "101", snippet: { title: "no video" } };
+  }
   const res = await fetch(`http://localhost:3000/api/youtubedata/${id}`);
   if (!res.ok) {
     throw new Error("Failed to fetch data");
